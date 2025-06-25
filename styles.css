@@ -11,7 +11,7 @@
         }
         
         header {
-            background-color: lab(18.78% 36.15 24.11);
+            background-color: lab(23.65% 45.04 34.29);
             color: rgb(186, 186, 63);
             padding: 2rem 0;
             text-align: center;
@@ -102,8 +102,8 @@
         
         
         footer {
-            background-color: #990404;
-            color: rgb(130, 145, 63);
+            background-color: #780202;
+            color: rgb(169, 188, 83);
             text-align: center;
             padding: 2rem 0;
             margin-top: 3rem;

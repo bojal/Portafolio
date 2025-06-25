@@ -8,7 +8,7 @@ const projects = [
     {
         title: "Geobubs",
         description: "Juego para gamejam de burbujas.",
-        imageUrl: "https://via.placeholder.com/600x400",
+        imageUrl: "img/Geo1",
         projectUrl: "https://bojal.itch.io/geobubs"
     },
     {
