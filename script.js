@@ -1,6 +1,6 @@
 const projects = [
    {
-        title: "cliquer",
+        title: "clicker base",
         description: "Juego web incremental hecho en unity.",
         imageUrl: "https://placehold.co/600x400",
         projectUrl: "https://bojal.github.io/clicker_b/"
@@ -19,8 +19,14 @@ const projects = [
     },
     {
         title: "Rumble Zone",
-        description: "Juego online.",
+        description: "Juego online. pronto",
         imageUrl: "img/RumblePortada2.png",
+        projectUrl: "#"
+    },
+    {
+        title: "Limites de honor",
+        description: "Juego sobre guerra del pacifico",
+        imageUrl: "https://placehold.co/600x400",
         projectUrl: "#"
     }
 ];
