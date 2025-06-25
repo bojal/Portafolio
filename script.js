@@ -1,14 +1,14 @@
 const projects = [
    {
         title: "cliquer",
-        description: "Juego incremental hecho en JavaScript.",
+        description: "Juego web incremental hecho en unity.",
         imageUrl: "https://placehold.co/600x400",
         projectUrl: "https://bojal.github.io/clicker_b/"
     },
     {
         title: "Geobubs",
-        description: "Juego para gamejam de burbujas.",
-        imageUrl: "img/Geo1",
+        description: "Juego web para gamejam de burbujas.",
+        imageUrl: "img/Geo1.png",
         projectUrl: "https://bojal.itch.io/geobubs"
     },
     {
@@ -18,8 +18,8 @@ const projects = [
         projectUrl: "https://bojal.itch.io/darkdead"
     },
     {
-        title: "Proyecto 4",
-        description: "Descripción breve del cuarto proyecto y su impacto.",
+        title: "Rumble Zone",
+        description: "Juego online.",
         imageUrl: "https://via.placeholder.com/600x400",
         projectUrl: "#"
     }
