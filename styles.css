@@ -6,14 +6,13 @@
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
+            background: linear-gradient(to right, #910000, #400505); /* fondo degradado */
+             color: #858484;
         }
         
         header {
-            background-color: #2c3e50;
-            color: white;
+            background-color: lab(18.78% 36.15 24.11);
+            color: rgb(186, 186, 63);
             padding: 2rem 0;
             text-align: center;
         }
@@ -74,10 +73,10 @@
         }
         
         .portfolio-card {
-            background: white;
+            background: rgb(0, 0, 0);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(203, 203, 203, 0.1);
             transition: transform 0.3s ease;
         }
         
@@ -100,17 +99,11 @@
             margin-bottom: 10px;
             color: #2c3e50;
         }
-        body {
-            background: linear-gradient(to right, #f0f0f0, #e0e0e0); /* fondo degradado */
-
-            background: url('ruta/a/tu/imagen.jpg') no-repeat center center fixed;
-    /* background-size: cover; */
-             color: #333;
-        }
+        
         
         footer {
-            background-color: #2c3e50;
-            color: white;
+            background-color: #990404;
+            color: rgb(130, 145, 63);
             text-align: center;
             padding: 2rem 0;
             margin-top: 3rem;
