@@ -14,13 +14,13 @@ const projects = [
     {
         title: "DarkDead",
         description: "Juego hecho en 2do semestre de carrera",
-        imageUrl: "https://via.placeholder.com/600x400",
+        imageUrl: "https://placehold.co/600x400",
         projectUrl: "https://bojal.itch.io/darkdead"
     },
     {
         title: "Rumble Zone",
         description: "Juego online.",
-        imageUrl: "https://via.placeholder.com/600x400",
+        imageUrl: "img/RumblePortada2.png",
         projectUrl: "#"
     }
 ];

@@ -25,6 +25,7 @@
         
         .about-section {
             display: flex;
+            flex-direction: row;
             align-items: center;
             padding: 3rem 0;
             flex-wrap: wrap;
@@ -38,13 +39,15 @@
         
         .about-image {
             flex: 1;
-            min-width: 300px;
+            min-width: 100px;
             text-align: center;
         }
         
         .about-image img {
-            max-width: 100%;
-            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
@@ -68,7 +71,7 @@
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 20px;
             padding: 2rem 0;
         }
         
@@ -102,7 +105,7 @@
         
         
         footer {
-            background-color: #780202;
+            background-color: #2e0101;
             color: rgb(169, 188, 83);
             text-align: center;
             padding: 2rem 0;
