@@ -1,12 +1,12 @@
- * {
+ *{
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Verdana', sans-serif;
         }
         
         body {
-            background: linear-gradient(to right, #292600, #7b0101); /* fondo degradado */
+            background: linear-gradient(to right, #292600, #7b0101);
              color: #858484;
         }
         
