@@ -26,13 +26,6 @@ const projects = [
   
 ];
 
-const galleryImages = [
-  "galeria/imagen 1.png",
-  "galeria/imagen 2.png",
-  "galeria/imagen 3.png"
- 
-];
-
 function generatePortfolioCards() {
   const container = document.getElementById('portfolio-container');
   projects.forEach(p => {
@@ -49,9 +42,6 @@ function generatePortfolioCards() {
   });
 }
 
-function changeImage(idx) {
-  document.getElementById('gallery-image').src = galleryImages[idx];
-}
 
 function updateYear() {
   document.getElementById('year').textContent = new Date().getFullYear();
