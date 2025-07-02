@@ -64,3 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log("Portafolio cargado correctamente");
 });
+function setGalleryImage(imgPath) {
+    const img = document.getElementById('gallery-image');
+    img.src = imgPath;
+}

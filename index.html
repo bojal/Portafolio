@@ -9,16 +9,25 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>Mi Portafolio </h1>
-        </div>
+         <div class="container header-flex">
+        <h1>BOJAL</h1>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@BojalDev42069/featured" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" class="icon-button">
+            </a>
+            <a href="https://github.com/bojal" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" class="icon-button">
+            </a>
+        </div> 
+    </div>
     </header>
     
     <section class="about-section container">
         <div class="about-text">
-            <h2>Benjamin Ortiz</h2>
-            <p>Soy un trivinata, egorávila simbatar
-Cinalca (ja), solo una clarata brata</p>
+            <h2>Sobre mi</h2>
+            <p>hola, soy un estudiante de ingenieria en realidad virtual y tecnico en administracion de empresas
+                con mension en logistica.
+            </p>
         
         </div>
         <div class="about-image">
@@ -31,10 +40,65 @@ Cinalca (ja), solo una clarata brata</p>
         <div class="portfolio-grid" id="portfolio-container">
         </div>
     </section>
-    
+
+<section class="container skills-section">
+    <h2>Mis Habilidades</h2>
+    <div class="skills-grid">
+        <a href="https://unity.com" target="_blank" class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity">
+            <p><strong>Unity</strong> — 4 años</p>
+        </a>
+        <a href="https://www.blender.org" target="_blank" class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender">
+            <p><strong>Blender</strong> — Modelado de objetos, 3 años</p>
+        </a>
+        <a href="https://www.blender.org/features/animation/" target="_blank" class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Animación en Blender">
+            <p><strong>Animación (Blender)</strong> — 2 años</p>
+        </a>
+        <a href="https://www.mysql.com/" target="_blank" class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+            <p><strong>MySQL</strong> — 1 año</p>
+        </a>
+        <a href="https://www.python.org/" target="_blank" class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+            <p><strong>Python</strong> — 1 año</p>
+        </a>
+        <a href="https://www.java.com/" target="_blank" class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+            <p><strong>Java</strong> — 1 año</p>
+        </a>
+        <a href="https://www.unrealengine.com/" target="_blank" class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg" alt="Unreal Engine">
+            <p><strong>Unreal Engine</strong> — 1 año</p>
+        </a>
+    </div>
+</section>
+
+<section class="container gallery-section">
+    <h2>Galería de Trabajos</h2>
+    <div class="gallery-container">
+        <img id="gallery-image" src="img/RumblePortada2.png" alt="Trabajo 1">
+        <div class="gallery-buttons">
+            <button onclick="changeImage(0)">1</button>
+            <button onclick="changeImage(1)">2</button>
+            <button onclick="changeImage(2)">3</button>
+        </div>
+    </div>
+</section>
+
+<section class="container video-section">
+    <h2>Trailer </h2>
+    <div class="video-container">
+        <iframe width="800" height="600" src="https://www.youtube.com/watch?v=eikFdtmG3JE" 
+            title="Video de YouTube" frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
+</section>
+
     <footer>
         <div class="container">
-            <p>© <span id="year"></span> Mi Portafolio para ramo [desarrollo web]. idk</p>
+            <p>© <span id="year"></span> Mi Portafolio para ramo [desarrollo web]. </p>
         </div>
     </footer>
     
