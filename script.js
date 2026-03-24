@@ -1,9 +1,9 @@
 const projects = [
   {
-    title: "GeoInt CH - Gemelo Táctico",
-    description: "Simulador interactivo de catástrofes (tsunamis, lahares) con topografía procedural (DEM) vía Marching Cubes y algoritmos de fluidos optimizados. Proyecto S2T-FAMAE.",
-    imageUrl: "img/F_Perfil.png", // CAMBIA ESTO por una captura real de tu simulador en Unity
-    projectUrl: "https://github.com/bojal" // Usa un video o el repo si tienes permiso
+    title: "Proyecto GeoInt CH",
+    description: "Simulador interactivo de catástrofes con topografía procedural en base a DEMs vía Marching Cubes y algoritmos de fluidos optimizados. Proyecto S2T-FAMAE.",
+    imageUrl: "img/FondoGeoInt.png", // CAMBIA ESTO por una captura real de tu simulador en Unity
+    projectUrl: "https://github.com/bojal"
   },
   {
     title: "DarkDead",
