@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mi Portafolio Ev3</title>
+  <title>Benjamín Ortiz | Ing. Realidad Virtual</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
     <div class="container header-flex">
-      <h1>Bojal</h1>
+      <div class="logo">
+        <h1>B. Ortiz</h1>
+        <span class="subtitle">Ingeniero VR & Simulaciones</span>
+      </div>
       <div class="social-icons">
         <a href="https://www.youtube.com/" target="_blank">
           <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" title="YouTube" />
@@ -23,58 +26,54 @@
 
   <section class="about-section container">
     <div class="about-image">
-      <img src="img/F_Perfil.png" alt="Foto de perfil" id="profile-pic" />
+      <img src="img/F_Perfil.png" alt="Foto de perfil de Benjamín" id="profile-pic" />
     </div>
     <div class="about-text">
       <h2>Sobre Mí</h2>
-      <p>¡Hola! Soy B, desarrollador de juegos y modelador 3D.
-Actualmente estudio Ingeniería en Realidad Virtual, y también soy Técnico Profesional en Administración de Empresas con mención en Logística.
-A lo largo de mi trayectoria he tenido la oportunidad de trabajar en diferentes áreas, lo que me ha permitido desarrollar una visión amplia y versátil. Sin embargo, siempre he sentido una pasión especial por el desarrollo de videojuegos y la creación de mundos en 3D.</p>
+      <p>Soy Ingeniero en Realidad Virtual y Técnico en Administración Logística, especializado en el desarrollo de simulaciones tácticas, gemelos digitales y entornos 3D interactivos. Mi enfoque radica en la integración de datos geoespaciales (DEM) y la optimización de arquitecturas de software en motores como Unity, creando soluciones de visualización de alto rendimiento para la toma de decisiones críticas.</p>
+      
+      <a href="CV_Benjamin_Ortiz.pdf" download="CV_Benjamin_Ortiz.pdf" class="btn-cv" target="_blank">Descargar Currículum (PDF)</a>
     </div>
   </section>
 
-  <section class="container">
-    <h2>Mis Trabajos</h2>
-    <div class="portfolio-grid" id="portfolio-container"></div>
+  <section class="container portfolio-section">
+    <h2>Proyectos Destacados</h2>
+    <div class="portfolio-grid" id="portfolio-container">
+      </div>
   </section>
-
 
   <section class="container skills-section">
-    <h2>Mis Habilidades</h2>
+    <h2>Stack Tecnológico</h2>
     <div class="skills-grid">
-      <a href="https://unity.com/" target="_blank" class="skill-card">
+      <div class="skill-card">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity" />
-        <p><strong>Unity</strong> — 4 años</p>
-      </a>
-      <a href="https://www.blender.org/" target="_blank" class="skill-card">
+        <p><strong>Unity</strong><br>4 años</p>
+      </div>
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" />
+        <p><strong>C#</strong><br>Avanzado</p>
+      </div>
+      <div class="skill-card">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender" />
-        <p><strong>Blender</strong> — 3 años (modelado organico)</p>
-      </a>
-      <a href="https://www.blender.org/features/animation/" target="_blank" class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Animación en Blender" />
-        <p><strong>Blender </strong> — 2 años (Animación)</p>
-      </a>
-      <a href="https://www.mysql.com/" target="_blank" class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
-        <p><strong>MySQL</strong> — 1 año</p>
-      </a>
-      <a href="https://www.python.org/" target="_blank" class="skill-card">
+        <p><strong>Blender</strong><br>Modelado & Animación</p>
+      </div>
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+        <p><strong>Git & GitHub</strong><br>Control de Versiones</p>
+      </div>
+      <div class="skill-card">
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
-        <p><strong>Python</strong> — 1 año</p>
-      </a>
-      <a href="https://www.java.com/" target="_blank" class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
-        <p><strong>Java</strong> — 1 año</p>
-      </a>
-      <a href="https://www.unrealengine.com/" target="_blank" class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg" alt="Unreal Engine" />
-        <p><strong>Unreal Engine</strong> — 1 año</p>
-      </a>
+        <p><strong>Python</strong><br>1 año</p>
+      </div>
+      <div class="skill-card">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+        <p><strong>MySQL</strong><br>Bases de Datos</p>
+      </div>
     </div>
   </section>
 
   <section class="container">
-    <h2>Demo en Video</h2>
+    <h2>Demo Reel</h2>
     <div class="video-container">
      <iframe
         width="560" height="315"
@@ -86,9 +85,9 @@ A lo largo de mi trayectoria he tenido la oportunidad de trabajar en diferentes 
 
   <footer>
     <div class="container">
-        <h2>contacto: benjaminortizlucero@gmail.com</h2>
-    <p>© <span id="year"></span> B. Todos los derechos reservados. </p>
-  </div>
+      <p>Contacto: <strong>benjaminortizlucero@gmail.com</strong></p>
+      <p class="copyright">© <span id="year"></span> Benjamín Ortiz. Todos los derechos reservados. | Arquitectura de Software & Simulaciones</p>
+    </div>
   </footer>
 
   <script src="script.js"></script>
