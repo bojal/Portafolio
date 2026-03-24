@@ -1,7 +1,7 @@
 const projects = [
   {
     title: "Proyecto GeoInt CH",
-    description: "Simulador interactivo de catástrofes con topografía procedural en base a DEMs vía Marching Cubes y algoritmos de fluidos optimizados. Proyecto S2T-FAMAE.",
+    description: "Simulador interactivo de catástrofes con topografía procedural en base a DEMs vía Marching Cubes y algoritmos de fluidos optimizados.",
     imageUrl: "img/FondoGeoInt.png",
     projectUrl: "https://drive.google.com/drive/u/0/folders/1uEDFlTqeNhooDkmUV6d4Mw0A91MBSDTr"
   },
