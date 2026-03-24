@@ -2,8 +2,8 @@ const projects = [
   {
     title: "Proyecto GeoInt CH",
     description: "Simulador interactivo de catástrofes con topografía procedural en base a DEMs vía Marching Cubes y algoritmos de fluidos optimizados. Proyecto S2T-FAMAE.",
-    imageUrl: "img/FondoGeoInt.png", // CAMBIA ESTO por una captura real de tu simulador en Unity
-    projectUrl: "https://github.com/bojal"
+    imageUrl: "img/FondoGeoInt.png",
+    projectUrl: "https://drive.google.com/drive/u/0/folders/1uEDFlTqeNhooDkmUV6d4Mw0A91MBSDTr"
   },
   {
     title: "DarkDead",
@@ -15,7 +15,7 @@ const projects = [
     title: "RumbleZone",
     description: "Proyecto de videojuego multijugador online. Arquitectura de red en proceso.",
     imageUrl: "img/RumblePortada2.png",
-    projectUrl: "https://bojal.github.io/"
+    projectUrl: "https://drive.google.com/drive/u/0/folders/1Ve9ojzDymdP_3t-YNasLFpOP8MEzHL3Q"
   },
   {
     title: "GeoBubs",
