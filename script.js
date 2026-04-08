@@ -1,25 +1,25 @@
 const projects = [
   {
     title: "Proyecto GeoInt CH",
-    description: "Simulador interactivo de catástrofes con topografía procedural en base a DEMs vía Marching Cubes y algoritmos de fluidos optimizados.",
+    description: "Simulador interactivo de catástrofes con topografía procedural en base a DEMs vía Marching Cubes y algoritmos de fluidos optimizados. | ROL: Desarrollador de Software principal",
     imageUrl: "img/FondoGeoInt.png",
     projectUrl: "https://drive.google.com/drive/u/0/folders/1uEDFlTqeNhooDkmUV6d4Mw0A91MBSDTr"
   },
   {
     title: "DarkDead",
-    description: "Desarrollo de videojuego de supervivencia para PC. Gestión de assets y mecánicas 3D.",
+    description: "Prototipo de Videojuego. Gestión de assets y mecánicas 3D.| ROL: Desarrollador de Software principal ",
     imageUrl: "img/DarkDeadBaner.png",
     projectUrl: "https://bojal.itch.io/darkdead"
   },
   {
     title: "RumbleZone",
-    description: "Proyecto de videojuego multijugador online. Arquitectura de red en proceso.",
+    description: "Proyecto de videojuego multijugador online. Arquitectura de red en proceso. | ROL: Desarrollador de sistema multijugador y Diseñador de escenario",
     imageUrl: "img/RumblePortada2.png",
     projectUrl: "https://drive.google.com/drive/u/0/folders/1Ve9ojzDymdP_3t-YNasLFpOP8MEzHL3Q"
   },
   {
     title: "GeoBubs",
-    description: "Juego Web interactivo desplegado en Itch.io.",
+    description: "Juego Web interactivo desplegado en Itch.io. | ROL: Desarrollador de software accesible desde navegador",
     imageUrl: "img/Geo1.png",
     projectUrl: "https://bojal.itch.io/geobubs"
   }
