@@ -1,95 +1,540 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Benjamín Ortiz | Ing. Realidad Virtual y Simulaciones</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Benjamín Ortiz · Ingeniero VR &amp; Simulaciones</title>
+
+<meta name="description" content="Portafolio de Benjamín Ortiz Lucero: simulación geoespacial de desastres naturales en Unity DOTS, realidad virtual, gemelos digitales y desarrollo de videojuegos." />
+<meta name="author" content="Benjamín Ortiz Lucero" />
+<meta name="theme-color" content="#07090c" />
+<meta name="keywords" content="Unity DOTS, ECS, simulación, realidad virtual, gemelos digitales, game developer, Chile, GeoInt CH" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Benjamín Ortiz · Ingeniero VR &amp; Simulaciones" />
+<meta property="og:description" content="Simulación geoespacial, realidad virtual y desarrollo de videojuegos. Unity DOTS · ECS · Blender." />
+<meta property="og:image" content="img/FondoGeoInt.png" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Benjamín Ortiz Lucero",
+  "jobTitle": "Ingeniero en Realidad Virtual y Simulaciones",
+  "email": "mailto:benjaminortizlucero@gmail.com",
+  "knowsAbout": ["Unity DOTS", "ECS", "Simulación geoespacial", "Realidad Virtual", "Blender", "C#"],
+  "sameAs": ["https://github.com/bojal", "https://www.youtube.com/@BojalDev42069", "https://bojal.itch.io"]
+}
+</script>
 </head>
-<body>
-  <header>
-    <div class="container header-flex">
-      <div class="logo">
-        <h1>Benjamín. Ortiz</h1>
-        <span class="subtitle">Ingeniero VR y Simulaciones</span>
-      </div>
-      <div class="social-icons">
-        <a href="https://www.youtube.com/@BojalDev42069" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" title="YouTube" />
+
+<body data-lang="es">
+
+<!-- ══════════════════════════════════ PRELOADER ══════════════════════════════ -->
+<div class="boot" id="boot" aria-hidden="true">
+  <div class="boot__inner">
+    <div class="boot__logo">B<span>/</span>O</div>
+    <div class="boot__log" id="bootLog"></div>
+    <div class="boot__bar"><i id="bootBar"></i></div>
+  </div>
+</div>
+
+<div class="scroll-progress"><i id="scrollBar"></i></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════ NAV ════════════════════════════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__wrap">
+    <a class="brand" href="#hero">
+      <span class="brand__mark"><svg class="ic"><use href="#i-terrain"></use></svg></span>
+      <span class="brand__txt">
+        <b>Benjamín Ortiz</b>
+        <i data-en="VR &amp; Simulation Engineer">Ingeniero VR &amp; Simulaciones</i>
+      </span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="Principal">
+      <a href="#about"    data-en="About">Perfil</a>
+      <a href="#projects" data-en="Projects">Proyectos</a>
+      <a href="#devlog"   data-en="Devlog">Devlog</a>
+      <a href="#stack"    data-en="Stack">Stack</a>
+      <a href="#path"     data-en="Track record">Trayectoria</a>
+      <a href="#contact"  data-en="Contact">Contacto</a>
+    </nav>
+
+    <div class="nav__tools">
+      <button class="tool" id="openPalette" title="Buscar (Ctrl + K)" aria-label="Buscar">
+        <svg class="ic"><use href="#i-search"></use></svg><kbd>Ctrl K</kbd>
+      </button>
+      <button class="tool lang" id="langToggle" title="Español / English" aria-label="Cambiar idioma">
+        <svg class="ic"><use href="#i-globe"></use></svg><span id="langLabel">EN</span>
+      </button>
+      <button class="tool burger" id="burger" aria-label="Menú" aria-expanded="false">
+        <svg class="ic"><use href="#i-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════ HERO ═══════════════════════════════════ -->
+<section class="hero" id="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero__scrim"></div>
+
+  <div class="hero__hud" aria-hidden="true">
+    <span class="hud-tl">SYS// PORTFOLIO_v2</span>
+    <span class="hud-tr">STGO · CL &nbsp;·&nbsp; <i id="clock">--:--</i></span>
+    <span class="hud-bl">RENDER: <i id="fps">--</i> FPS</span>
+    <span class="hud-br">SCROLL ↓</span>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__kicker">
+      <span class="dot"></span>
+      <span data-en="Available for collaborations · Santiago, Chile">Disponible para colaboraciones · Santiago, Chile</span>
+    </p>
+
+    <h1 class="hero__title">
+      <span class="l1">Benjamín</span>
+      <span class="l2">Ortiz Lucero</span>
+    </h1>
+
+    <p class="hero__role">
+      <span class="prompt">&gt;</span>
+      <span id="typed"></span><span class="caret"></span>
+    </p>
+
+    <p class="hero__lead" data-en="I build simulations that have to be right, not just look good: real terrain, physics that hold up under scrutiny and architectures that survive a hundred thousand entities on screen.">
+      Construyo simulaciones que tienen que ser correctas, no solo verse bien: terreno real,
+      física que aguanta el escrutinio y arquitecturas que sobreviven a cien mil entidades en pantalla.
+    </p>
+
+    <div class="hero__cta">
+      <a href="#projects" class="btn btn--primary">
+        <svg class="ic"><use href="#i-target"></use></svg>
+        <span data-en="Explore projects">Explorar proyectos</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=_b7Sg5dZCNg" target="_blank" rel="noopener" class="btn btn--ghost">
+        <svg class="ic"><use href="#i-play"></use></svg>
+        <span data-en="Watch GeoInt CH demo">Ver demo GeoInt CH</span>
+      </a>
+      <a href="CV_Benjamin_Ortiz.pdf" download class="btn btn--line">
+        <svg class="ic"><use href="#i-download"></use></svg>
+        <span data-en="CV (PDF)">CV (PDF)</span>
+      </a>
+    </div>
+
+    <div class="hero__stats" id="heroStats">
+      <div><b data-count="8">0</b><span data-en="Shipped projects">Proyectos desarrollados</span></div>
+      <div><b data-count="100" data-suffix="K+">0</b><span data-en="Simulated entities">Entidades simuladas</span></div>
+      <div><b data-count="4">0</b><span data-en="Years with Unity">Años con Unity</span></div>
+      <div><b data-count="3">0</b><span data-en="Active R&amp;D lines">Líneas de I+D activas</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ ABOUT ══════════════════════════════════ -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="sec__no">01</span>
+      <h2 data-en="Profile">Perfil</h2>
+      <p class="sec__sub" data-en="Engineer between simulation, geospatial data and interactive 3D.">
+        Ingeniero entre la simulación, el dato geoespacial y el 3D interactivo.
+      </p>
+    </header>
+
+    <div class="about">
+      <aside class="about__card reveal">
+        <div class="about__photo">
+          <img src="img/F_Perfil.png" alt="Retrato de Benjamín Ortiz" loading="lazy" />
+          <span class="about__ring" aria-hidden="true"></span>
+        </div>
+        <ul class="about__facts">
+          <li><svg class="ic"><use href="#i-pin"></use></svg><span data-en="Santiago, Chile">Santiago, Chile</span></li>
+          <li><svg class="ic"><use href="#i-cube"></use></svg><span data-en="VR &amp; Digital Game Design Eng.">Ing. en RV y Diseño de Juegos Digitales</span></li>
+          <li><svg class="ic"><use href="#i-shield"></use></svg><span>S2T-FAMAE · UBO</span></li>
+          <li><svg class="ic"><use href="#i-globe"></use></svg><span data-en="Spanish (native) · English (technical)">Español (nativo) · Inglés (técnico)</span></li>
+        </ul>
+        <a href="CV_Benjamin_Ortiz.pdf" download class="btn btn--primary btn--full">
+          <svg class="ic"><use href="#i-download"></use></svg>
+          <span data-en="Download CV">Descargar CV</span>
         </a>
-        <a href="https://github.com/bojal" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" title="GitHub" />
-        </a>
-      </div>
-    </div>
-  </header>
+      </aside>
 
-  <section class="about-section container">
-    <div class="about-image">
-      <img src="img/F_Perfil.png" alt="Foto de perfil de Benjamín" id="profile-pic" />
-    </div>
-    <div class="about-text">
-      <h2>Sobre Mí</h2>
-      <p>Soy Ingeniero en Realidad Virtual y Técnico en Administración Logística, especializado en el desarrollo de simulaciones, gemelos digitales y entornos 3D interactivos. Mi enfoque radica en la integración de datos geogaficos y la optimización de arquitecturas de software en motores como Unity, creando soluciones de visualización de alto rendimiento para la toma de decisiones críticas.</p>
-      
-      <a href="CV_Benjamin_Ortiz.pdf" download="CV_Benjamin_Ortiz.pdf" class="btn-cv" target="_blank">Descargar Currículum (PDF)</a>
-    </div>
-  </section>
+      <div class="about__body reveal">
+        <p class="lead" data-en="I am a Virtual Reality engineer and Logistics Administration technician, specialised in simulation development, digital twins and interactive 3D environments.">
+          Soy Ingeniero en Realidad Virtual y Técnico en Administración Logística, especializado en
+          desarrollo de simulaciones, gemelos digitales y entornos 3D interactivos.
+        </p>
+        <p data-en="My focus is the integration of geospatial data and the optimisation of software architectures in engines such as Unity, building high-performance visualisation solutions for critical decision-making. In practice that means working on the boundary between an engine built for games and a domain — risk and terrain — that does not forgive approximations.">
+          Mi enfoque está en la integración de datos geográficos y la optimización de arquitecturas de
+          software en motores como Unity, creando soluciones de visualización de alto rendimiento para la
+          toma de decisiones críticas. En la práctica eso significa trabajar en el límite entre un motor
+          pensado para juegos y un dominio —riesgo y territorio— que no perdona aproximaciones.
+        </p>
 
-  <section class="container portfolio-section">
-    <h2>Proyectos Destacados</h2>
-    <div class="portfolio-grid" id="portfolio-container">
-    </div>
-  </section>
-
-  <section class="container skills-section">
-    <h2>Stack Tecnológico</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity" />
-        <p><strong>Unity</strong><br>Manejo de herramientas Avanzadas</p>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" />
-        <p><strong>C#</strong><br>Manejo orientado a unity Avanzado</p>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender" />
-        <p><strong>Blender</strong><br>Modelado y Animación Avanzado</p>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
-        <p><strong>Git & GitHub</strong><br>Control de Versiones Básico</p>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
-        <p><strong>Python</strong><br>machine learning Básico</p>
-      </div>
-      <div class="skill-card">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
-        <p><strong>MySQL</strong><br>Manejo Básico</p>
+        <div class="pillars">
+          <article class="pillar">
+            <svg class="ic ic--lg"><use href="#i-terrain"></use></svg>
+            <h3 data-en="Geospatial simulation">Simulación geoespacial</h3>
+            <p data-en="Real DEMs, procedural terrain, fluids and risk analysis over Unity DOTS.">
+              DEMs reales, terreno procedural, fluidos y análisis de riesgo sobre Unity DOTS.
+            </p>
+          </article>
+          <article class="pillar">
+            <svg class="ic ic--lg"><use href="#i-vr"></use></svg>
+            <h3 data-en="Virtual reality">Realidad virtual</h3>
+            <p data-en="Immersive multiuser environments for training and operational analysis.">
+              Entornos inmersivos multiusuario para entrenamiento y análisis operativo.
+            </p>
+          </article>
+          <article class="pillar">
+            <svg class="ic ic--lg"><use href="#i-cpu"></use></svg>
+            <h3 data-en="Performance architecture">Arquitectura de rendimiento</h3>
+            <p data-en="ECS, Jobs and Burst: designing data so the frame budget holds.">
+              ECS, Jobs y Burst: diseñar el dato para que el presupuesto de frame aguante.
+            </p>
+          </article>
+          <article class="pillar">
+            <svg class="ic ic--lg"><use href="#i-gamepad"></use></svg>
+            <h3 data-en="Game development">Desarrollo de videojuegos</h3>
+            <p data-en="Mechanics, level design, netcode and full asset pipelines.">
+              Mecánicas, diseño de niveles, netcode y pipelines completos de assets.
+            </p>
+          </article>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="container">
-    <h2>Demo Reel</h2>
-    <div class="video-container">
-     <iframe
-        width="560" height="315"
-        src="https://www.youtube.com/embed/_-qQb8zRv5k"
-        frameborder="0" allowfullscreen>
-    </iframe>
+<!-- ══════════════════════════════════ PROJECTS ═══════════════════════════════ -->
+<section class="sec sec--alt" id="projects">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="sec__no">02</span>
+      <h2 data-en="Projects">Proyectos</h2>
+      <p class="sec__sub" data-en="Simulation, warfare, space horror and games. Click any card for the full sheet.">
+        Simulación, bélicos, terror espacial y videojuegos. Haz clic en cualquier tarjeta para ver la ficha completa.
+      </p>
+    </header>
+
+    <div class="filters reveal" id="projFilters" role="tablist" aria-label="Filtro de proyectos">
+      <button class="chip is-on" data-cat="all"    data-en="All">Todos</button>
+      <button class="chip" data-cat="sim"    data-en="Simulation">Simulación</button>
+      <button class="chip" data-cat="vr"     data-en="Virtual reality">Realidad virtual</button>
+      <button class="chip" data-cat="war"    data-en="Warfare">Bélicos</button>
+      <button class="chip" data-cat="horror" data-en="Space horror">Terror espacial</button>
+      <button class="chip" data-cat="game"   data-en="Games">Videojuegos</button>
     </div>
-  </section>
 
-  <footer>
-    <div class="container">
-      <p>Contacto: <strong>benjaminortizlucero@gmail.com</strong></p>
-      <p class="copyright">© <span id="year"></span> Benjamín Ortiz. Todos los derechos reservados. | Gemelos Digitales & Desarrollo 3D</p>
+    <div class="pgrid" id="projGrid"></div>
+    <p class="empty" id="projEmpty" hidden data-en="No projects in this category yet.">Aún no hay proyectos en esta categoría.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ DEVLOG ═════════════════════════════════ -->
+<section class="sec" id="devlog">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="sec__no">03</span>
+      <h2 data-en="Devlog &amp; news">Devlog &amp; noticias</h2>
+      <p class="sec__sub" data-en="Development notes, technical decisions and project milestones.">
+        Notas de desarrollo, decisiones técnicas e hitos de proyecto.
+      </p>
+    </header>
+
+    <div class="blogbar reveal">
+      <label class="search">
+        <svg class="ic"><use href="#i-search"></use></svg>
+        <input type="search" id="postSearch" placeholder="Buscar en el devlog…" data-en-ph="Search the devlog…" aria-label="Buscar entradas" />
+      </label>
+      <div class="filters filters--tags" id="postTags"></div>
     </div>
-  </footer>
 
-  <script src="script.js"></script>
+    <div id="postPinned"></div>
+    <div class="blist" id="postGrid"></div>
+    <p class="empty" id="postEmpty" hidden data-en="No entries match your search.">Ninguna entrada coincide con tu búsqueda.</p>
+    <div class="more"><button class="btn btn--line" id="morePosts" data-en="Load more entries">Cargar más entradas</button></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ STACK ═════════════════════════════════ -->
+<section class="sec sec--alt" id="stack">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="sec__no">04</span>
+      <h2 data-en="Technical stack">Stack técnico</h2>
+      <p class="sec__sub" data-en="Tools I use daily and the level I actually work at with each.">
+        Herramientas que uso a diario y el nivel real al que trabajo con cada una.
+      </p>
+    </header>
+
+    <div class="stack">
+      <article class="stackgrp reveal">
+        <h3><svg class="ic"><use href="#i-cpu"></use></svg><span data-en="Engine &amp; simulation">Motor y simulación</span></h3>
+        <ul class="bars">
+          <li data-lvl="92"><span>Unity</span><i data-en="Advanced tooling, editor scripting, custom pipelines">Herramientas avanzadas, editor scripting, pipelines propios</i></li>
+          <li data-lvl="85"><span>Unity DOTS / ECS</span><i data-en="Jobs, Burst, data-oriented design">Jobs, Burst, diseño orientado a datos</i></li>
+          <li data-lvl="88"><span>C#</span><i data-en="Systems architecture oriented to Unity">Arquitectura de sistemas orientada a Unity</i></li>
+          <li data-lvl="70"><span>Unity XR / OpenXR</span><i data-en="Immersive interaction, multiuser R&amp;D">Interacción inmersiva, I+D multiusuario</i></li>
+        </ul>
+      </article>
+
+      <article class="stackgrp reveal">
+        <h3><svg class="ic"><use href="#i-brush"></use></svg><span data-en="3D &amp; content">3D y contenido</span></h3>
+        <ul class="bars">
+          <li data-lvl="86"><span>Blender</span><i data-en="Modelling, animation, export pipeline">Modelado, animación, pipeline de exportación</i></li>
+          <li data-lvl="72"><span>Shader Graph / HLSL</span><i data-en="Terrain, water and vision-mode shaders">Shaders de terreno, agua y modos de visión</i></li>
+          <li data-lvl="68"><span data-en="Level design">Diseño de niveles</span><i data-en="Readability, routes and pacing">Legibilidad, rutas y ritmo</i></li>
+        </ul>
+      </article>
+
+      <article class="stackgrp reveal">
+        <h3><svg class="ic"><use href="#i-network"></use></svg><span data-en="Data &amp; tooling">Datos y herramientas</span></h3>
+        <ul class="bars">
+          <li data-lvl="74"><span data-en="GIS / DEM">GIS / DEM</span><i data-en="Elevation models, layers, georeferencing">Modelos de elevación, capas, georreferenciación</i></li>
+          <li data-lvl="60"><span>Python</span><i data-en="Data processing, machine learning basics">Procesamiento de datos, bases de machine learning</i></li>
+          <li data-lvl="58"><span>MySQL</span><i data-en="Relational modelling, queries">Modelado relacional, consultas</i></li>
+          <li data-lvl="64"><span>Git &amp; GitHub</span><i data-en="Version control, branching, releases">Control de versiones, ramas, releases</i></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="logos reveal" aria-label="Tecnologías">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" alt="Unity" loading="lazy" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" loading="lazy" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender" loading="lazy" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" loading="lazy" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" loading="lazy" />
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ PATH ══════════════════════════════════ -->
+<section class="sec" id="path">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="sec__no">05</span>
+      <h2 data-en="Track record">Trayectoria</h2>
+      <p class="sec__sub" data-en="From game prototypes to a simulator used for decision support.">
+        De prototipos de videojuego a un simulador usado como apoyo a la decisión.
+      </p>
+    </header>
+
+    <ol class="timeline">
+      <li class="reveal">
+        <span class="tl__year">2026</span>
+        <div class="tl__body">
+          <h3 data-en="Multiuser VR extension · R&amp;D">Extensión VR multiusuario · I+D</h3>
+          <p data-en="Start of the immersive phase of GeoInt CH: shared rooms, hand interaction with data layers and authoritative state sync.">
+            Inicio de la fase inmersiva de GeoInt CH: salas compartidas, interacción manual con capas de
+            datos y sincronización autoritativa del estado.
+          </p>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="tl__year">2025</span>
+        <div class="tl__body">
+          <h3 data-en="GeoInt CH · flood system">GeoInt CH · sistema de inundación</h3>
+          <p data-en="Fluid simulation parallelised with Jobs + Burst over Marching Cubes terrain generated from real DEMs.">
+            Simulación de fluidos paralelizada con Jobs + Burst sobre terreno Marching Cubes generado
+            desde DEMs reales.
+          </p>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="tl__year">2024</span>
+        <div class="tl__body">
+          <h3 data-en="Internship &amp; thesis with S2T-FAMAE">Práctica profesional y tesis con S2T-FAMAE</h3>
+          <p data-en="Move from academic projects to a professional, serious-use simulation environment.">
+            Salto desde proyectos académicos a un entorno de simulación profesional de uso serio.
+          </p>
+        </div>
+      </li>
+      <li class="reveal">
+        <span class="tl__year">2023 — 2024</span>
+        <div class="tl__body">
+          <h3 data-en="Games: DarkDead, GeoBubs, RumbleZone">Videojuegos: DarkDead, GeoBubs, RumbleZone</h3>
+          <p data-en="Complete cycles: mechanics, 3D pipeline, WebGL builds, netcode and public release.">
+            Ciclos completos: mecánicas, pipeline 3D, builds WebGL, netcode y publicación.
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ REEL ══════════════════════════════════ -->
+<section class="sec sec--alt" id="reel">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="sec__no">06</span>
+      <h2 data-en="Demo reel">Demo reel</h2>
+      <p class="sec__sub" data-en="Technical footage of the simulator and the personal work.">
+        Material técnico del simulador y del trabajo personal.
+      </p>
+    </header>
+
+    <div class="reels">
+      <figure class="reel reveal">
+        <div class="frame" data-yt="_b7Sg5dZCNg" data-title="GeoInt CH — demostración técnica">
+          <img src="img/FondoGeoInt.png" alt="GeoInt CH" loading="lazy" />
+          <button class="playbtn" aria-label="Reproducir"><svg class="ic"><use href="#i-play"></use></svg></button>
+        </div>
+        <figcaption><b>GeoInt CH</b> — <span data-en="technical demo">demostración técnica</span></figcaption>
+      </figure>
+      <figure class="reel reveal">
+        <div class="frame" data-yt="_-qQb8zRv5k" data-title="Demo reel">
+          <img src="img/RumblePortada2.png" alt="Demo reel" loading="lazy" />
+          <button class="playbtn" aria-label="Reproducir"><svg class="ic"><use href="#i-play"></use></svg></button>
+        </div>
+        <figcaption><b>Reel</b> — <span data-en="selected work">trabajo seleccionado</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ CONTACT ═══════════════════════════════ -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <header class="sec__head reveal">
+      <span class="sec__no">07</span>
+      <h2 data-en="Contact">Contacto</h2>
+      <p class="sec__sub" data-en="Simulation, VR, technical 3D or collaboration on a serious project.">
+        Simulación, VR, 3D técnico o colaboración en un proyecto serio.
+      </p>
+    </header>
+
+    <div class="contact">
+      <div class="contact__side reveal">
+        <div class="mailbox">
+          <span data-en="Direct email">Correo directo</span>
+          <b id="mailText">benjaminortizlucero@gmail.com</b>
+          <button class="btn btn--line btn--sm" id="copyMail">
+            <svg class="ic"><use href="#i-copy"></use></svg><span data-en="Copy">Copiar</span>
+          </button>
+        </div>
+        <ul class="social">
+          <li><a href="https://github.com/bojal" target="_blank" rel="noopener">
+            <svg class="ic"><use href="#i-repo"></use></svg><span>GitHub</span><i>@bojal</i></a></li>
+          <li><a href="https://www.youtube.com/@BojalDev42069" target="_blank" rel="noopener">
+            <svg class="ic"><use href="#i-play"></use></svg><span>YouTube</span><i>@BojalDev42069</i></a></li>
+          <li><a href="https://bojal.itch.io" target="_blank" rel="noopener">
+            <svg class="ic"><use href="#i-gamepad"></use></svg><span>Itch.io</span><i>bojal.itch.io</i></a></li>
+        </ul>
+      </div>
+
+      <form class="contact__form reveal" id="contactForm" novalidate>
+        <div class="row">
+          <label><span data-en="Name">Nombre</span>
+            <input type="text" name="name" required placeholder="Tu nombre" data-en-ph="Your name" /></label>
+          <label><span data-en="Email">Correo</span>
+            <input type="email" name="email" required placeholder="tu@correo.com" data-en-ph="you@email.com" /></label>
+        </div>
+        <label><span data-en="Subject">Asunto</span>
+          <input type="text" name="subject" placeholder="Colaboración, propuesta, consulta…" data-en-ph="Collaboration, proposal, question…" /></label>
+        <label><span data-en="Message">Mensaje</span>
+          <textarea name="message" rows="5" required placeholder="Cuéntame del proyecto…" data-en-ph="Tell me about the project…"></textarea></label>
+        <button type="submit" class="btn btn--primary btn--full">
+          <svg class="ic"><use href="#i-mail"></use></svg>
+          <span data-en="Send message">Enviar mensaje</span>
+        </button>
+        <p class="hint" data-en="Opens your email client with everything already written.">
+          Abre tu cliente de correo con todo ya redactado.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ FOOTER ════════════════════════════════ -->
+<footer class="foot">
+  <div class="wrap foot__wrap">
+    <div>
+      <b>Benjamín Ortiz Lucero</b>
+      <span data-en="VR &amp; Simulation Engineer · Digital twins &amp; 3D development">
+        Ingeniero VR &amp; Simulaciones · Gemelos digitales y desarrollo 3D</span>
+    </div>
+    <nav class="foot__nav">
+      <a href="#projects" data-en="Projects">Proyectos</a>
+      <a href="#devlog" data-en="Devlog">Devlog</a>
+      <a href="#contact" data-en="Contact">Contacto</a>
+    </nav>
+    <p class="foot__copy">© <span id="year"></span> Benjamín Ortiz. <span data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="Volver arriba"><svg class="ic"><use href="#i-up"></use></svg></button>
+
+<!-- ══════════════════════════════════ MODALES ═══════════════════════════════ -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__bg" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__x" data-close aria-label="Cerrar"><svg class="ic"><use href="#i-close"></use></svg></button>
+    <div class="modal__body" id="modalBody"></div>
+  </div>
+</div>
+
+<div class="palette" id="palette" hidden>
+  <div class="palette__bg" data-pclose></div>
+  <div class="palette__panel" role="dialog" aria-modal="true" aria-label="Buscador">
+    <label class="palette__input">
+      <svg class="ic"><use href="#i-search"></use></svg>
+      <input type="text" id="paletteInput" placeholder="Buscar proyectos, entradas y secciones…" data-en-ph="Search projects, entries and sections…" />
+      <kbd>ESC</kbd>
+    </label>
+    <ul class="palette__list" id="paletteList"></ul>
+  </div>
+</div>
+
+<!-- ══════════════════════════ SPRITE DE ICONOS (originales) ═════════════════ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="s" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></g>
+  </defs>
+  <symbol id="i-terrain" viewBox="0 0 24 24"><path d="M2 18l6-8 4 5 3-4 7 7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M2 21h20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="15" cy="11" r="1.6" fill="currentColor"/></symbol>
+  <symbol id="i-vr" viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="10" rx="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 18c.6-1.6 3.4-1.6 4 0M2 11L0 9M22 11l2-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/><circle cx="7.5" cy="13" r="1.6" fill="currentColor"/><circle cx="16.5" cy="13" r="1.6" fill="currentColor"/></symbol>
+  <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 7l9 5 9-5M12 12v10" stroke="currentColor" stroke-width="1.4" fill="none"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><rect x="9.5" y="9.5" width="5" height="5" rx="1" fill="currentColor"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><circle cx="12" cy="4" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="4" cy="19" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="20" cy="19" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 6.5v5m0 0l-6.4 5.2M12 11.5l6.4 5.2" stroke="currentColor" stroke-width="1.6" fill="none"/></symbol>
+  <symbol id="i-brush" viewBox="0 0 24 24"><path d="M14 4l6 6-8.5 8.5a4 4 0 01-2.3 1.1L4 21l1.4-5.2a4 4 0 011.1-2.3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12.5 6.5l5 5" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-gamepad" viewBox="0 0 24 24"><path d="M7 8h10a5 5 0 015 5v1a3.5 3.5 0 01-6.3 2.1L14 15h-4l-1.7 1.1A3.5 3.5 0 012 14v-1a5 5 0 015-5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M7.5 11v3M6 12.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="16.5" cy="12" r="1.2" fill="currentColor"/><circle cx="19" cy="14" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect x="2" y="4.5" width="20" height="15" rx="4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 9.2l5 2.8-5 2.8z" fill="currentColor"/></symbol>
+  <symbol id="i-repo" viewBox="0 0 24 24"><circle cx="7" cy="6" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="7" cy="18" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="9" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 8.3v7.4M17 11.3c0 3-4 2.2-6.6 4.2" stroke="currentColor" stroke-width="1.6" fill="none"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 2v4h4M9 12h6M9 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-drive" viewBox="0 0 24 24"><path d="M9 3h6l6 11H15z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 14h12l-3 5H6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-web" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c3 3.4 3 14.6 0 18-3-3.4-3-14.6 0-18z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.2 9.5h17.6M3.2 14.5h17.6M12 3c2.8 3.4 2.8 14.6 0 18-2.8-3.4-2.8-14.6 0-18z" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 7.5l8.5 6 8.5-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.4 15.4L21 21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V6M6 12l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13M12 5.5l6.5 6.5-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10.5l5 5 5-5M4 20h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.4 7-12A7 7 0 005 10c0 5.6 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5l8 3v6.2c0 5-3.4 8.7-8 10.3-4.6-1.6-8-5.3-8-10.3V5.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.6 12.2l2.4 2.4 4.4-4.8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15 6.5A2.5 2.5 0 0012.5 4h-6A2.5 2.5 0 004 6.5v6A2.5 2.5 0 006.5 15" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 11.5V4h7.5l10 10-7.5 7.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7.6" cy="7.6" r="1.5" fill="currentColor"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-itch" viewBox="0 0 24 24"><path d="M3 9l2.5-4h13L21 9v2.5a2.2 2.2 0 01-4 1.4 2.2 2.2 0 01-3.5.4 2.2 2.2 0 01-3 0 2.2 2.2 0 01-3.5-.4A2.2 2.2 0 013 11.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5 13.6V19h14v-5.4M10 19v-3.4h4V19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.5l2.2 6 6.3 2.2-6.3 2.2-2.2 6-2.2-6L3.5 10.7l6.3-2.2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+</svg>
+
+<script src="data/projects.js"></script>
+<script src="data/posts.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
